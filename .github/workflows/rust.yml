@@ -16,7 +16,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build
-      run: cargo build --verbose
+    - name: Linting
+      run: cargo clippy -- -D warnings
+    - name: Formatting
+      run: cargo fmt -- -check
+    - name: Vulnerabilities
+      run: cargo audit
     - name: Run tests
       run: cargo test --verbose
+    - name: Run code coverage
+      run: cargo tarpaulin --ignore-tests
+    - name: Build
+      run: cargo build --verbose
