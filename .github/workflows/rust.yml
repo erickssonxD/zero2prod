@@ -19,7 +19,7 @@ jobs:
     - name: Linting
       run: cargo clippy -- -D warnings
     - name: Formatting
-      run: cargo fmt -- -check
+      run: cargo fmt -- --check
     - name: Vulnerabilities
       run: cargo audit
     - name: Run tests
